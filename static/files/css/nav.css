@@ -1,0 +1,75 @@
+@media only screen and (min-width: 768px) {
+    .mobile-only {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .mobile-hidden {
+        display: none !important;
+        visibility: hidden !important;
+    }
+}
+
+.r-nav {
+    padding: 20px 0 !important;
+    transition: 1s !important;
+    z-index: 100 !important;
+    border: none !important;
+    display: flex !important;
+}
+
+.r-nav.active-nav {
+    padding: 0 !important;
+    background: var(--primary-dark) !important;
+}
+
+.r-nav a {
+    color: var(--secondary-dark) !important;
+    margin: auto 15px !important;
+    font-weight: bold !important;
+}
+
+.r-nav.active-nav a {
+    color: var(--secondary-white) !important;
+}
+
+.r-nav a:hover {
+    color: var(--primary-dark) !important;
+}
+
+.r-nav.active-nav a:hover {
+    color: var(--primary-white) !important;
+}
+
+.r-nav a.active {
+    color: var(--primary-dark) !important;
+    border-bottom-color: var(--primary-dark) !important;
+    font-weight: bolder !important;
+}
+
+.r-nav.active-nav a.active {
+    color: var(--primary-white) !important;
+    border-bottom-color: var(--primary-white) !important;
+    font-weight: bolder !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .ui.fixed.menu {
+        display: none !important;
+    }
+
+    .secondary.pointing.menu .item,
+    .secondary.pointing.menu .menu {
+        display: none;
+    }
+
+    .secondary.pointing.menu .toc.item {
+        display: block;
+    }
+
+    .masthead.segment {
+        min-height: 350px;
+    }
+}

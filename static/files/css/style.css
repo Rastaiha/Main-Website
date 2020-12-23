@@ -1,0 +1,106 @@
+@font-face {
+  font-family: Samim;
+  src: url('../samim_fonts/eot/Samim.eot');
+  src: url('../samim_fonts/eot/Samim.eot?#iefix') format('embedded-opentype'),
+       url('../samim_fonts/woff2/Samim.woff2') format('woff2'),
+       url('../samim_fonts/woff/Samim.woff') format('woff'),
+       url('../samim_fonts/ttf/Samim.ttf') format('truetype');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Samim;
+  src: url('../samim_fonts/eot/Samim-Bold.eot');
+  src: url('../samim_fonts/eot/Samim-Bold.eot?#iefix') format('embedded-opentype'),
+       url('../samim_fonts/woff2/Samim-Bold.woff2') format('woff2'),
+       url('../samim_fonts/woff/Samim-Bold.woff') format('woff'),
+       url('../samim_fonts/ttf/Samim-Bold.ttf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Samim;
+  src: url('../samim_fonts/eot/Samim-Medium.eot');
+  src: url('../samim_fonts/eot/Samim-Medium.eot?#iefix') format('embedded-opentype'),
+       url('../samim_fonts/woff2/Samim-Medium.woff2') format('woff2'),
+       url('../samim_fonts/woff/Samim-Medium.woff') format('woff'),
+       url('../samim_fonts/ttf/Samim-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+
+
+:root {
+  --header:#292a2a;
+  --primary-dark: #13332f;
+  --secondary-dark: #1c5951;
+  --primary-light:#7be0cd;
+  --secondary-light:#37bba0;
+  --primary-white: #ffffff;
+  --secondary-white: #d9d9d9;
+  --primary-pink: #e02c68;
+  --secondary-pink: #9c264e;
+  --bubble: rgba(55,187,160,0.3);
+  --footer-color: #b4ede2;
+
+}
+
+
+body {
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.social {
+    transition: ease-in-out 200ms;
+}
+
+.social:hover {
+
+    transform: scale(1.5);
+
+}
+
+.social {
+    transition: ease-in-out 200ms;
+}
+
+.footer_logo {
+    transition: ease-in-out 200ms;
+}
+
+.mybackground {
+    background-color: var(--bubble) !important;
+    border-radius: 30px!important;
+    margin: auto;
+}
+*{
+    font-family: iransansdn , samim !important;
+}
+
+i {
+    font-family: "Icons" !important;
+}
+
+input[type="text"],input[type="email"],input[type=""], textarea,select {
+
+  background-color : rgba(255,255,255,0.7)  !important;
+    border-radius: 10px !important;
+
+}
+select {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;       /* Remove default arrow */
+
+}
+
+select.items {
+   background-color : rgba(255,255,255,0.7)  !important;
+}
+
