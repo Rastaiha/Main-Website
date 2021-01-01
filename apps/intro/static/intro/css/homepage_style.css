@@ -1,11 +1,10 @@
 .homepage_section {
-     border-radius:0;
-     margin-top :0!important;
-     margin-bottom: 0 !important;
-     padding-bottom: 70px !important;
-     padding-top: 70px !important;
+  border-radius: 0;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 70px !important;
+  padding-top: 70px !important;
 }
-
 
 .card1 h3 {
   color: #262626;
@@ -13,7 +12,7 @@
   line-height: 24px;
   font-weight: 700;
   margin-bottom: 4px;
-   margin-top: 4px;
+  margin-top: 4px;
 }
 .card1 p {
   font-size: 17px;
@@ -34,7 +33,7 @@
   overflow: hidden;
   top: 0;
   right: 0;
-  background-color:  var(--secondary-dark);
+  background-color: var(--secondary-dark);
   border-radius: 0 4px 0 4px;
 }
 .go-arrow {
@@ -81,7 +80,6 @@
   color: #fff;
 }
 
-
 .flip-card {
   background-color: transparent;
   width: 300px;
@@ -98,9 +96,9 @@
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform .7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
   transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
 
@@ -108,7 +106,8 @@
   transform: rotateY(180deg);
 }
 
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -126,27 +125,33 @@
   height: 100%;
 }
 
-.flip-card-front:after{
-    content:'';
-    position:absolute;
-    width:100%; height:100%;
-    top:0; left:0;
-    background:rgba(0,0,0,0.5);
-    opacity:1;
-    border-radius: 10px;
-    -webkit-backface-visibility: hidden;
+.flip-card-front:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  border-radius: 10px;
+  -webkit-backface-visibility: hidden;
 }
 
 .flip-card-back {
-  background: -webkit-linear-gradient(45deg, black 0%, var(--secondary-dark) 100%);
+  background: -webkit-linear-gradient(
+    45deg,
+    black 0%,
+    var(--secondary-dark) 100%
+  );
   color: var(--primary-white);
   transform: rotateY(180deg);
   display: table;
 }
 
-.flip-card-back p{
+.flip-card-back p {
   margin-left: 15px;
-  margin-right:15px;
+  margin-right: 15px;
 }
 
 .text-block {
@@ -159,13 +164,32 @@
   -webkit-backface-visibility: hidden;
 }
 
-.center-vertically{
-   display:table-cell;
-  vertical-align:middle;
-  text-align:center;
+.center-vertically {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .flip-card-back a {
   color: var(--primary-light);
   font-weight: bolder;
+}
+
+.landing-logo {
+  vertical-align: middle;
+  width: 30vw;
+}
+
+.rasta_h {
+  font-weight: bolder;
+  font-size: 80px;
+  color: var(--header);
+}
+
+@media (max-width: 1000px) {
+  .landing-logo {
+    width: 15vw;
+  }
+  .rasta_h {
+  }
 }

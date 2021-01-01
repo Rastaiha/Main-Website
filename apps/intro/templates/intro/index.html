@@ -16,14 +16,13 @@
     <div class="ui middle aligned stackable grid container two column" style="direction:ltr">
 
         <div class="ui center aligned column reveal_fade">
-            <img id="bird" src="{% static 'images/nav-logo.png' %}"
-                 style="vertical-align: middle;width:30vw;">
+            <img id="bird" src="{% static 'images/nav-logo.png' %}" class="landing-logo">
         </div>
 
         <div class="column" style=" text-justify: inter-word;">
             <div class="mobile-only" style=" text-align: center;">
                 <div class="row reveal_fade">
-                    <p class="reveal_fade" style="font-weight:bolder;font-size:60px;color: var(--header)"> رستا</p>
+                    <h1 class="reveal_fade rasta_h">رستا</h1>
                     <p class="reveal_fade" style="font-size:40px;font-weight: bold;color: var(--header)"> جمع
                         علمی-ترویجی</p>
                     <form class="ui form" method="post" id="notify">{% csrf_token %}
@@ -47,7 +46,7 @@
             </div>
             <div class="mobile-hidden" style=" text-align: justify;">
                 <div class="row reveal_fade">
-                    <p class="reveal_fade" style="font-weight:bolder;font-size:80px;color: var(--header)"> رستا</p>
+                    <h1 class="reveal_fade rasta_h">رستا</h1>
                     <p class="reveal_fade" style="font-weight:bolder;font-size:30px;color: var(--header)"> جمع
                         علمی-ترویجی</p>
                     <br><br>
