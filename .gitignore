@@ -22,3 +22,5 @@
 !dockerfile
 !dockerfile_worker
 !*.sh
+
+/venv
