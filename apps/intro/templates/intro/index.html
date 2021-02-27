@@ -25,23 +25,23 @@
                     <h1 class="reveal_fade rasta_h">رستا</h1>
                     <p class="reveal_fade" style="font-size:40px;font-weight: bold;color: var(--header)"> جمع
                         علمی-ترویجی</p>
-                    <form class="ui form" method="post" id="notify">{% csrf_token %}
-                        <div class="field">
-                            <div class="ui action input"
-                                 style="margin-top: 0px; margin-bottom: 25px;height: 50px; width: 300px;">
-
-                                <button class="ui button" type="submit" id="button1"
-                                        style="font-size: 10px; border-bottom-left-radius: 20px;border-top-left-radius: 20px;   background-color: var(--primary-dark); color: white">
-                                    عضویت در خبرنامه
-                                </button>
-                                <input type="email" placeholder="ایمیل"
-                                       style=" border-bottom-left-radius: 20px;border-top-left-radius: 20px;  background-color: #fff3d9;color: black"
-                                       id="email1" name="email">
-
-
-                            </div>
-                        </div>
-                    </form>
+{#                    <form class="ui form" method="post" id="notify">{% csrf_token %}#}
+{#                        <div class="field">#}
+{#                            <div class="ui action input"#}
+{#                                 style="margin-top: 0px; margin-bottom: 25px;height: 50px; width: 300px;">#}
+{##}
+{#                                <button class="ui button" type="submit" id="button1"#}
+{#                                        style="font-size: 10px; border-bottom-left-radius: 20px;border-top-left-radius: 20px;   background-color: var(--primary-dark); color: white">#}
+{#                                    عضویت در خبرنامه#}
+{#                                </button>#}
+{#                                <input type="email" placeholder="ایمیل"#}
+{#                                       style=" border-bottom-left-radius: 20px;border-top-left-radius: 20px;  background-color: #fff3d9;color: black"#}
+{#                                       id="email1" name="email">#}
+{##}
+{##}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </form>#}
                 </div>
             </div>
             <div class="mobile-hidden" style=" text-align: justify;">
@@ -50,23 +50,23 @@
                     <p class="reveal_fade" style="font-weight:bolder;font-size:30px;color: var(--header)"> جمع
                         علمی-ترویجی</p>
                     <br><br>
-                    <form class="ui form" method="post" id="notify">{% csrf_token %}
-                        <div class="field">
-                            <div class="ui action input"
-                                 style="margin-top: 0px; margin-bottom: 25px;height: 50px; width: 350px;">
-
-                                <button class="ui button" type="submit" id="button2"
-                                        style=" border-bottom-left-radius: 20px;border-top-left-radius: 20px;   background-color: var(--primary-dark); color: white">
-                                    عضویت در خبرنامه
-                                </button>
-                                <input type="email" placeholder="ایمیل"
-                                       style=" border-bottom-left-radius: 20px;border-top-left-radius: 20px;  background-color: #fff3d9;color: black"
-                                       id="email2" name="email">
-
-
-                            </div>
-                        </div>
-                    </form>
+{#                    <form class="ui form" method="post" id="notify">{% csrf_token %}#}
+{#                        <div class="field">#}
+{#                            <div class="ui action input"#}
+{#                                 style="margin-top: 0px; margin-bottom: 25px;height: 50px; width: 350px;">#}
+{##}
+{#                                <button class="ui button" type="submit" id="button2"#}
+{#                                        style=" border-bottom-left-radius: 20px;border-top-left-radius: 20px;   background-color: var(--primary-dark); color: white">#}
+{#                                    عضویت در خبرنامه#}
+{#                                </button>#}
+{#                                <input type="email" placeholder="ایمیل"#}
+{#                                       style=" border-bottom-left-radius: 20px;border-top-left-radius: 20px;  background-color: #fff3d9;color: black"#}
+{#                                       id="email2" name="email">#}
+{##}
+{##}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </form>#}
                 </div>
             </div>
         </div>
@@ -170,7 +170,7 @@
             <div class="six wide column" dir="rtl" style=" text-align: justify; text-justify: inter-word;">
                 <div class="row reveal_fade">
                     <h2 style="color: var(--header)">
-                        {{ upcoming_event.title |safe }}
+                        {{ upcoming_event.title | safe }}
                     </h2>
                 </div>
 
