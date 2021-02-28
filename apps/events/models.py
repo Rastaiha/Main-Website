@@ -11,7 +11,8 @@ from django_jalali.db import models as jmodels
 class Event(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False)
     poster = models.ImageField(upload_to='event_posters/', null=False, blank=False, validators=[validate_image_size])
-    summary = models.TextField(null=False, blank=False)
+    summary = models.TextField(null=True, blank=False)
+    teaser_link = models.URLField(null=True, blank=False)
     description = RichTextUploadingField(null=False, blank=False)
     location = models.CharField(max_length=100, null=False, blank=False)
     date = jmodels.jDateTimeField(null=False, blank=False)
