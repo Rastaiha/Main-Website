@@ -13,6 +13,7 @@ class Document(models.Model):
                                      limit_choices_to={"model__in": ('BlogPost', 'Event')})
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
+    image = models.ImageField(upload_to='', default='')  #what should i filed in
 
     def __str__(self):
         return str(self.content_object) + ' - ' + str(self.file.name)

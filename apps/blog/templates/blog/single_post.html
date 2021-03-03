@@ -74,7 +74,7 @@
 
 
             <div class="ui special cards">
-                {% for doc, type in docs %}
+                {% for doc, pic, type in docs %}
                 <div class="card file-card" style="opacity:95%!important;">
                     <div class="blurring dimmable image">
                         <div class="ui dimmer">
@@ -88,7 +88,11 @@
                             </div>
                         </div>
                         {% static "" as baseUrl %}
-                        <img src="{{ baseUrl }}/images/icons/{{ type }}.png">
+                        {% if pic %}
+                            <img src="{{ pic.url }}">
+                        {% else %}
+                            <img src="{{ baseUrl }}/images/icons/{{ type }}.png">
+                        {% endif %}
                     </div>
                     <div class="content">
                         <a class="file-name" style="color: var(--header)"> {{ doc.caption}}</a>
