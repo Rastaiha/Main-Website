@@ -30,6 +30,7 @@
     text-align: justify;
     font-size: medium;
 }
+
 .bubble {
     border-radius: 20px !important;
     background-color: var(--bubble) !important;

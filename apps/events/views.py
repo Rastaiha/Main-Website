@@ -29,12 +29,19 @@ def get_single_event(request, eve_id):
         response = render(request, 'base/404.html')
         response.status_code = 404
         return response
+
     context = {
         'event': event,
         'year': event.get_persian_year(),
         'month': event.get_persian_month(),
         'docs': get_docs(event),
     }
+
+    if event.teaser_link:
+        link = event.teaser_link.split('/')
+        teaser_url = 'https://www.aparat.com/video/video/embed/videohash/' + str(link[-1]) + '/vt/frame'
+        context['teaser_url'] = teaser_url
+
     return render(request, 'events/single_event.html', context)
 
 
