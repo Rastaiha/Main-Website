@@ -28,7 +28,8 @@ def homepage(req):
 
 
 def get_last_events():
-    events = Event.objects.order_by('-date')[:3]
+    events = Event.objects.filter(up_coming=False).order_by('-date')[:3]
+    print(events)
     return [
         {
             'id': event.id,
@@ -37,7 +38,8 @@ def get_last_events():
             'year': event.get_persian_year(),
             'month': event.get_persian_month(),
             'summary': event.summary,
-            'location': event.location
+            'location': event.location,
+            #'up_coming': event.up_coming,
         } for event in events
     ]
 

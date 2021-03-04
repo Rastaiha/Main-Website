@@ -16,6 +16,7 @@ class Event(models.Model):
     description = RichTextUploadingField(null=False, blank=False)
     location = models.CharField(max_length=100, null=False, blank=False)
     date = jmodels.jDateTimeField(null=False, blank=False)
+    up_coming = models.BooleanField(default=False, null=False, blank=False)
 
     def save(self, *args, **kwargs):
         im1 = Image.open(self.poster)
