@@ -24,7 +24,7 @@ class PhotoInline(admin.TabularInline):
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    fields = ['name', 'poster', 'summary', 'description', 'location', 'date', 'teaser_link']
+    fields = ['name', 'poster', 'summary', 'description', 'location', 'date', 'teaser_link', 'up_coming']
     inlines = [
         PhotoInline, DocumentInline
     ]
