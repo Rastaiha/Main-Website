@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'apps.newsletter',
     'apps.doc',
     'apps.shortener',
+    'apps.members',
     'ckeditor',
     'ckeditor_uploader',
     # 'djcelery',

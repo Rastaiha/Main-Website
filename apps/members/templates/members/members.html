@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+<title>{% block title %}اعضای رستا | رستایی‌ها{% endblock %}</title>
+
+{% block extra_header %}
+    <link rel="stylesheet" href="{% static 'members/css/members_style.css' %}">
+    <script src="{% static 'scripts/scrollreveal.js' %}"></script>
+{% endblock %}
+
+{% block container %}
+    <div style="margin-top: 140px;margin-bottom: 50px">
+
+        {% for term in terms %}
+            {% include 'members/term.html' with object=term %}
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+    <script>
+        ScrollReveal().reveal('.fade-reveal', {duration: 800, easing: 'ease-in-out', interval: 200});
+    </script>
+{% endblock %}
