@@ -45,5 +45,7 @@ class RastaMember(models.Model):
         super(RastaMember, self).save()
 
     def __str__(self):
-        return self.name + ' - ' + self.role
+        if self.role:
+            return self.name + ' - ' + self.role
+        return self.name
 
