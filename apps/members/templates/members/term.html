@@ -26,9 +26,11 @@
             <div class="ui member-name detail">
                 {{ member.name }}
             </div>
+            {% if member.role %}
             <div class="ui member-role detail">
                 {{ member.role }}
             </div>
+            {% endif %}
             <div class="ui center aligned member-edu detail">
                 {{ member.education }}
             </div>
