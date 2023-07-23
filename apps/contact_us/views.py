@@ -12,8 +12,6 @@ def get_contact_us(request):
     if request.method == 'GET':
         return render(request, 'contact_us/contact_us.html', context)
     else:
-        if not check_bibot_response(request):
-            return render(request, 'contact_us/contact_us.html', context)
         form = ContactUsForm(request.POST)
         if form.is_valid():
             form.save()
