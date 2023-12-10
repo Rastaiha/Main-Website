@@ -160,7 +160,7 @@ def submit_comment_reply(request):
 
 def get_docs(post):
     docs = Document.objects.filter(content_type=ContentType.objects.get_for_model(BlogPost).id, object_id=post.id)
-    return [(doc, get_doc_type(doc)) for doc in docs]
+    return [(doc, doc.image, get_doc_type(doc)) for doc in docs]
 
 
 def get_doc_type(doc):
