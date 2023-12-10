@@ -163,13 +163,15 @@ LOGGING = {
 
 LANGUAGE_CODE = 'fa'
 
-TIME_ZONE = 'Iran'
+#this was 'Iran' and now is 'Asia/Tehran'
+TIME_ZONE = 'Asia/Tehran'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+#this was 'false' and now is 'true'
+USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -277,4 +279,4 @@ CELERY_RESULT_BACKEND = get_environment_var('CELERY_RESULT_BACKEND', 'redis://lo
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'IRAN'
+CELERY_TIMEZONE = 'Asia/Tehran'
