@@ -25,7 +25,7 @@ from apps.blog import urls as blog_url
 from apps.events import urls as events_url
 from apps.newsletter import urls as newsletter_url
 from apps.shortener import urls as shortener_urls
-
+from apps.members import urls as members_urls
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -40,7 +40,8 @@ urlpatterns = [
     path('newsletter/', include(newsletter_url)),
     path('doc/', include(doc_url)),
     path('', include(intro_urls)),
-    path('go/', include(shortener_urls))
+    path('go/', include(shortener_urls)),
+    path('members/',include(members_urls))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 if settings.DEBUG:

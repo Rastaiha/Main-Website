@@ -5,48 +5,74 @@
 {% load i18n %}
 <head>
     <meta charset="UTF-8">
-    <meta property="og:site_name" content="رستایی‌ها" />
+    <meta property="og:site_name" content="رستایی‌ها"/>
     {% block opengraph %}
-        <meta property="og:title" content="{% block og_title %}رستایی‌ها{% endblock %}" />
+        <meta property="og:title" content="{% block og_title %}رستایی‌ها{% endblock %}"/>
         <meta property="og:image" content="{% block og_image %}{% static 'images/nav-logo.png' %}{% endblock %}"/>
-        <meta property="og:type" content="{% block og_type %}website{% endblock %}" />
-        <meta property="og:description" content="{% block og_description %}جمعی دانشجویی برای تولید محتوای آموزشی تعاملی برای ترویج یادگیری در دانش‌آموزان کشور{% endblock %}" />
+        <meta property="og:type" content="{% block og_type %}website{% endblock %}"/>
+        <meta property="og:description"
+              content="{% block og_description %}جمعی دانشجویی برای تولید محتوای آموزشی تعاملی برای ترویج یادگیری در دانش‌آموزان کشور{% endblock %}"/>
     {% endblock %}
-        <link rel="manifest" href="/manifest.json">
-      <!-- Najva Push Notification -->
-        <script type="text/javascript">
-            (function(){
-                var now = new Date();
-                var version = now.getFullYear().toString() + "0" + now.getMonth() + "0" + now.getDate() +
-                    "0" + now.getHours();
-                var head = document.getElementsByTagName("head")[0];
-                var link = document.createElement("link");
-                link.rel = "stylesheet";
-                link.href = "https://app.najva.com/static/css/local-messaging.css" + "?v=" + version;
-                head.appendChild(link);
-                var script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.src = "https://app.najva.com/static/js/scripts/rastaiha233-website-14360-45ed14c6-5e04-429b-81ee-ad6cf4afd77b.js" + "?v=" + version;
-                head.appendChild(script);
-                })()
-        </script>
-        <!-- END NAJVA PUSH NOTIFICATION -->
+    <link rel="manifest" href="/manifest.json">
+    <!-- Najva Push Notification -->
+    <script type="text/javascript">
+        (function () {
+            var now = new Date();
+            var version = now.getFullYear().toString() + "0" + now.getMonth() + "0" + now.getDate() +
+                "0" + now.getHours();
+            var head = document.getElementsByTagName("head")[0];
+            var link = document.createElement("link");
+            link.rel = "stylesheet";
+            link.href = "https://app.najva.com/static/css/local-messaging.css" + "?v=" + version;
+            head.appendChild(link);
+            var script = document.createElement("script");
+            script.type = "text/javascript";
+            script.async = true;
+            script.src = "https://app.najva.com/static/js/scripts/rastaiha233-website-14360-45ed14c6-5e04-429b-81ee-ad6cf4afd77b.js" + "?v=" + version;
+            head.appendChild(script);
+        })()
+    </script>
+    <!-- END NAJVA PUSH NOTIFICATION -->
+
+    <script type="text/javascript">
+      !(function () {
+        var i = "Qwg8dV",
+          a = window,
+          d = document;
+        function g() {
+          var g = d.createElement("script"),
+            s = "https://www.goftino.com/widget/" + i,
+            l = localStorage.getItem("goftino_" + i);
+          (g.async = !0), (g.src = l ? s + "?o=" + l : s);
+          d.getElementsByTagName("head")[0].appendChild(g);
+        }
+        "complete" === d.readyState
+          ? g()
+          : a.attachEvent
+          ? a.attachEvent("onload", g)
+          : a.addEventListener("load", g, !1);
+      })();
+    </script>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160800151-1"></script>
     <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-160800151-1');
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-160800151-1');
 
     </script>
     <title>{% block title %}رستایی‌ها{% endblock %}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript" src="{% static 'semantic/semantic.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'scripts/nav.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'semantic/semantic.rtl.min.css'%}">
+    <link rel="stylesheet" href="{% static 'semantic/semantic.rtl.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/nav.css' %}">
     <link rel="icon" type="image/png" href="{% static 'images/nav-logo.png' %}">
@@ -65,30 +91,30 @@
 
 
 {% block sidebar %}
-{% include 'base/sidebar.html' %}
+    {% include 'base/sidebar.html' %}
 {% endblock %}
 <div class="pusher">
     {% block body %}
-    <div id="main" style="min-height:  80vh!important;">
-        <div class="container">
-            {% block navbar %}
-            {% include 'base/navbar.html' %}
-            {% endblock %}
-        </div>
+        <div id="main" style="min-height:  80vh!important;">
+            <div class="container">
+                {% block navbar %}
+                    {% include 'base/navbar.html' %}
+                {% endblock %}
+            </div>
 
-        {% block content %}
-        <div class="ui container">
-            {% block container %}
+            {% block content %}
+                <div class="ui container">
+                    {% block container %}
 
+                    {% endblock %}
+                </div>
             {% endblock %}
+
+
         </div>
+        {% block footer %}
+            {% include 'base/footer.html' %}
         {% endblock %}
-
-
-    </div>
-    {% block footer %}
-    {% include 'base/footer.html' %}
-    {% endblock %}
     {% endblock %}
 
 </div>

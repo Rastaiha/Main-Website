@@ -46,7 +46,7 @@ def validate_square_image(image):
 
 
 def validate_file_size(file):
-    limit_mb = 30
+    limit_mb = 50
     file_size = file.file.size
     if file_size > limit_mb * 1024 * 1024:
         raise ValidationError("Max size of file is %s MB" % limit_mb)

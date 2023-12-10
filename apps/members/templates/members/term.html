@@ -3,13 +3,13 @@
 <div class="ui bubble segment" dir="rtl">
 
     <h2 class="ui center aligned dividing header" style="color: var(--header)">
-         اعضای هسته‌ مرکزی
+         {{term.name}}
     </h2>
 
     <div class="ui center aligned stackable grid">
 
 
-        {% for member in members %}
+        {% for member in term.members.all %}
 
         <div class="ui four wide column fade-reveal">
             {% if member.photo_hidden %}
@@ -26,9 +26,11 @@
             <div class="ui member-name detail">
                 {{ member.name }}
             </div>
+            {% if member.role %}
             <div class="ui member-role detail">
                 {{ member.role }}
             </div>
+            {% endif %}
             <div class="ui center aligned member-edu detail">
                 {{ member.education }}
             </div>

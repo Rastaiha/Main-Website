@@ -27,7 +27,6 @@ def post_dictionary(post):
         'photo': post.photo,
         'publish_date': post.get_persian_date(),
         'summary': post.summary,
-
         'categories': [cat_dictionary(cat) for cat in post.categories.all()]
     }
 
