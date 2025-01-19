@@ -17,11 +17,11 @@ if [ "$DATABASE" = "postgres" ]; then
 fi
 
 echo "Running database migrations..."
-python manage.py migrate --no-input
+python3 manage.py migrate --no-input
 echo "Database migrations completed."
 
 echo "Collecting static files..."
-python manage.py collectstatic --no-input --clear
+python3 manage.py collectstatic --no-input --clear
 echo "Static files collected."
 
 echo "Starting the application..."
