@@ -27,7 +27,7 @@ RUN pip install --upgrade pip pip-tools
 
 # Copy requirements file and compile dependencies
 COPY requirements.txt requirements.txt
-RUN pip-compile requirements.txt && pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the application source code
 COPY . .
