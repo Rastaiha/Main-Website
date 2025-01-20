@@ -2,6 +2,7 @@ celery==5.2.7
 Django==3.1.5
 django_ckeditor==6.0.0
 django_jalali==4.1.2
+gunicorn==23.0.0
 jdatetime==3.6.2
 Pillow==8.1.0
 Requests==2.32.3
