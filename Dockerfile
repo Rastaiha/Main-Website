@@ -1,69 +1,23 @@
-# Stage 1: Build stage
-FROM python:3.8-alpine AS builder
+FROM python:3.8-slim
 
-# Set environment variables for Python
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
-# Set work directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
-# Install build dependencies
-RUN apk add --no-cache \
-    build-base \
-    gcc \
-    musl-dev \
-    libc-dev \
-    postgresql-dev \
-    libffi-dev \
-    openssl-dev \
-    jpeg-dev \
-    zlib-dev \
-    libxslt-dev \
-    && apk add --no-cache --virtual .build-deps linux-headers
+RUN apt-get update && apt-get install --no-install-recommends -y \
+        build-essential \
+        curl \
+    && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip and install pip-tools for dependency management
-RUN pip install --upgrade pip pip-tools
+RUN pip install --no-cache-dir --upgrade pip wheel
 
-# Copy requirements file and compile dependencies
-COPY requirements.txt requirements.txt
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the application source code
 COPY . .
 
-# Stage 2: Runtime stage
-FROM python:3.8-alpine
-
-# Set environment variables for Python
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-# Set work directory
-WORKDIR /usr/src/app
-
-# Install runtime dependencies
-RUN apk add --no-cache \
-    libpq \
-    libffi \
-    jpeg \
-    zlib \
-    libxslt
-
-# Copy dependencies from the builder image
-COPY --from=builder /usr/src/app /usr/src/app
-
-# Add a non-root user and set permissions
-RUN adduser -D -H -u 1001 django \
-    && chown -R django /usr/src/app \
-    && mkdir -p /usr/src/app/logging /usr/src/app/staticfiles /usr/src/app/media \
-    && chown -R django /usr/src/app/logging /usr/src/app/staticfiles /usr/src/app/media
-
-# Switch to non-root user
-USER django
-
-# Expose the application port (if applicable)
 EXPOSE 8000
 
-# Run the entrypoint script
-ENTRYPOINT ["/usr/src/app/entrypoint.prod.sh"]
+ENTRYPOINT ["/app/entrypoint.prod.sh"]
