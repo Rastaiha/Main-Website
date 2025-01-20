@@ -40,20 +40,15 @@ LOGGING = {
         'console': {
             'class': 'logging.StreamHandler',
         },
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'logging/debug.log'),
-        },
     },
     'loggers': {
         '': {
-            'handlers': ['file', 'console'],
+            'handlers': ['console'],
             'level': LOG_LEVEL,
             'propagate': True
         },
         'django': {
-            'handlers': ['file', 'console'],
+            'handlers': ['console'],
             'level': LOG_LEVEL,
             'propagate': True,
         },
