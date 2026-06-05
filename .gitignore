@@ -165,4 +165,5 @@ temp*
 .env*
 .vscode/
 staticfiles/
+certbot/
 
