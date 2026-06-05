@@ -66,21 +66,34 @@ cp env.example .env
 Open the `.env` file and configure your settings (such as database credentials, domain names, and Django secret keys).
 
 ### 2. Run the Stack
-Build and start the containers in detached mode:
+
+#### Option A: Server Deployment (No Source Code Needed)
+To deploy the application on a server, you only need `docker-compose.yml` and `.env`. The pre-built images will be automatically pulled from the **GitHub Container Registry (GHCR)**.
+Start the containers in detached mode:
 ```bash
-docker-compose up -d --build
+docker compose up -d
 ```
+
+#### Option B: Local Development (Source Code Cloned)
+For local development, Docker Compose automatically reads `docker-compose.override.yml` to build images locally from source code, mount the project folder for live hot-reloading, and spin up Django's development server.
+Build and start the containers:
+```bash
+docker compose up -d --build
+```
+
+### 3. Startup Lifecycle
 On startup:
 1. The database and Redis containers spin up.
-2. The web application waits for PostgreSQL availability.
-3. Django migrations automatically apply.
-4. Static files are collected into `/app/staticfiles`.
-5. The development server starts listening on `http://localhost:80` (handled by Nginx).
+2. The web/worker applications wait for PostgreSQL database availability.
+3. Django migrations are automatically applied.
+4. Static files are collected inside the container.
+5. The application starts listening on port 80/443 (handled by Nginx).
 
-To stop the application completely:
+To stop the application:
 ```bash
-docker-compose down
+docker compose down
 ```
+
 
 ---
 
