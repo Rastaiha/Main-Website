@@ -15,12 +15,8 @@ services:
       - "6379:6379"
 
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - .:/app
+    image: ${WEB_IMAGE:-ghcr.io/imfardad/rasta-main-website-web:main}
+    command: gunicorn Rasta_Web.wsgi:application --bind 0.0.0.0:8000
     ports:
       - "8000:8000"
     env_file:
@@ -30,13 +26,9 @@ services:
       - redis
 
   worker:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ${WEB_IMAGE:-ghcr.io/imfardad/rasta-main-website-web:main}
     entrypoint: ["/app/entrypoint.worker.prod.sh"]
     command: celery -A Rasta_Web worker --loglevel=info
-    volumes:
-      - .:/app
     env_file:
       - .env
     depends_on:
@@ -44,9 +36,7 @@ services:
       - redis
 
   nginx:
-    build:
-      context: ./nginx
-      dockerfile: Dockerfile
+    image: ${NGINX_IMAGE:-ghcr.io/imfardad/rasta-main-website-nginx:main}
     ports:
       - "80:80"
       - "443:443"
@@ -67,3 +57,4 @@ services:
 
 volumes:
   postgres_data:
+
