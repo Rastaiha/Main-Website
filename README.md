@@ -67,15 +67,17 @@ Open the `.env` file and configure your settings (such as database credentials, 
 
 ### 2. Run the Stack
 
-#### Option A: Server Deployment (No Source Code Needed)
-To deploy the application on a server, you only need `docker-compose.yml` and `.env`. The pre-built images will be automatically pulled from the **GitHub Container Registry (GHCR)**.
+The Docker Compose configuration is split into two separate files to keep development and production environments clean and explicit:
+
+#### Option A: Production Deployment (No Source Code Needed)
+To run the production stack on a remote server, you only need [docker-compose.prod.yml](docker-compose.prod.yml) and your `.env` file. It pulls pre-built production images from **GitHub Container Registry (GHCR)** and runs Gunicorn.
 Start the containers in detached mode:
 ```bash
-docker compose up -d
+docker compose -f docker-compose.prod.yml up -d
 ```
 
 #### Option B: Local Development (Source Code Cloned)
-For local development, Docker Compose automatically reads `docker-compose.override.yml` to build images locally from source code, mount the project folder for live hot-reloading, and spin up Django's development server.
+For local development, use [docker-compose.yml](docker-compose.yml) which compiles your local source code, mounts the project folder into the containers for live hot-reloading, and runs Django's development server.
 Build and start the containers:
 ```bash
 docker compose up -d --build
@@ -90,9 +92,9 @@ On startup:
 5. The application starts listening on port 80/443 (handled by Nginx).
 
 To stop the application:
-```bash
-docker compose down
-```
+* For Development: `docker compose down`
+* For Production: `docker compose -f docker-compose.prod.yml down`
+
 
 
 ---
