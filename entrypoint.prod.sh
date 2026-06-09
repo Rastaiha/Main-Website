@@ -25,4 +25,4 @@ python3 manage.py collectstatic --no-input --clear
 echo "Static files collected."
 
 echo "Starting the application..."
-exec "$@"  # Execute the command passed to the script (e.g., gunicorn or Django's runserver)
+gunicorn Rasta_Web.wsgi:application --bind 0.0.0.0:8000
