@@ -13,4 +13,4 @@ fi
 
 python manage.py collectstatic --no-input --clear
 
-exec "$@"
+celery -A Rasta_Web worker --loglevel=info
