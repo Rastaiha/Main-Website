@@ -164,3 +164,6 @@ dns_records*.txt
 temp*
 .env*
 .vscode/
+staticfiles/
+certbot/
+

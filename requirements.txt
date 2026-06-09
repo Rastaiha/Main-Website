@@ -6,3 +6,5 @@ gunicorn==23.0.0
 jdatetime==3.6.2
 Pillow==8.1.0
 Requests==2.32.3
+psycopg2-binary==2.9.9
+redis==5.0.4

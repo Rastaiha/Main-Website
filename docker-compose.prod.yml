@@ -1,0 +1,59 @@
+services:
+
+  db:
+    image: postgres:15-alpine
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  web:
+    image: ${WEB_IMAGE:-ghcr.io/imfardad/rasta-main-website-web:main}
+    command: gunicorn Rasta_Web.wsgi:application --bind 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+
+  worker:
+    image: ${WEB_IMAGE:-ghcr.io/imfardad/rasta-main-website-web:main}
+    entrypoint: ["/app/entrypoint.worker.prod.sh"]
+    command: celery -A Rasta_Web worker --loglevel=info
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+
+  nginx:
+    image: ${NGINX_IMAGE:-ghcr.io/imfardad/rasta-main-website-nginx:main}
+    ports:
+      - "80:80"
+      - "443:443"
+    env_file:
+      - .env
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    depends_on:
+      - web
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done'"
+
+volumes:
+  postgres_data:
