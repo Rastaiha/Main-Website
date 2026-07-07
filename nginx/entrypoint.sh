@@ -9,6 +9,20 @@ echo "Starting Nginx entrypoint. SSL_TYPE=${SSL_TYPE}, DOMAIN_NAME=${DOMAIN_NAME
 # Ensure configuration directory exists
 mkdir -p /etc/nginx/conf.d
 
+# Shared location blocks for serving Django static & media files directly
+# from the volume populated by `collectstatic` in the web container.
+STATIC_LOCATIONS=$(cat <<'NGINX'
+    location /static/ {
+        alias /var/www/static/;
+    }
+
+    location /media/ {
+        alias /var/www/media/;
+    }
+
+NGINX
+)
+
 # Generate config based on SSL_TYPE
 if [ "$SSL_TYPE" = "none" ]; then
     echo "Configuring HTTP-only mode..."
@@ -18,6 +32,7 @@ server {
     listen [::]:80;
     server_name ${DOMAIN_NAME};
 
+${STATIC_LOCATIONS}
     location / {
         proxy_pass http://web:8000;
         proxy_set_header Host \$host;
@@ -62,6 +77,7 @@ server {
     ssl_prefer_server_ciphers on;
     ssl_ciphers HIGH:!aNULL:!MD5;
 
+${STATIC_LOCATIONS}
     location / {
         proxy_pass http://web:8000;
         proxy_set_header Host \$host;
@@ -123,6 +139,7 @@ server {
     ssl_prefer_server_ciphers on;
     ssl_ciphers HIGH:!aNULL:!MD5;
 
+${STATIC_LOCATIONS}
     location / {
         proxy_pass http://web:8000;
         proxy_set_header Host \$host;

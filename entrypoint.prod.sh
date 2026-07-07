@@ -25,4 +25,5 @@ python3 manage.py collectstatic --no-input --clear
 echo "Static files collected."
 
 echo "Starting the application..."
-gunicorn Rasta_Web.wsgi:application --bind 0.0.0.0:8000
+# Hand off to the image's CMD (supervisord runs nginx + gunicorn together).
+exec "$@"
