@@ -5,7 +5,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.shortcuts import render
 
 from Rasta_Web.settings.base import bibot_SiteKey
-from Rasta_Web.utils import check_bibot_response
+from Rasta_Web.utils import check_hcaptcha_response
 from apps.blog.forms import CommentForm, ReplyForm
 from apps.blog.models import *
 from django.template.loader import render_to_string
@@ -135,8 +135,8 @@ def get_single_post(request, post_id, rest):
 
 def submit_comment_reply(request):
     response = {}
-    if not check_bibot_response(request):
-        response['bibot_err'] = 'error'
+    if not check_hcaptcha_response(request):
+        response['hcaptcha_err'] = 'error'
         return HttpResponse(
             json.dumps(response),
             content_type="application/json"

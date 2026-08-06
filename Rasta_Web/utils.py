@@ -1,5 +1,5 @@
 from django.core.exceptions import ValidationError
-
+from django.conf import settings
 from Rasta_Web.settings import base
 import requests
 from django.contrib import messages
@@ -29,6 +29,28 @@ def check_bibot_response(request):
     messages.error(request, 'ارتباط با سرور بی‌بات برقرار نشده است! آیا جاوااسکریپت شما فعال است؟')
     return False
 
+def check_hcaptcha_response(request):
+    hcaptcha_response = request.POST.get('h-captcha-response')
+    if hcaptcha_response:
+        verification_url = "https://hcaptcha.com/siteverify"
+        payload = {
+            'secret': settings.HCAPTCHA_SECRET,
+            'response': hcaptcha_response,
+            'remoteip': request.META.get('REMOTE_ADDR')  # Optional
+        }
+        response = requests.post(verification_url, data=payload)
+        result = response.json()
+        
+        if result.get('success'):
+            messages.success(request, 'تأیید hCaptcha با موفقیت انجام شد!')
+            return True
+        else:
+            messages.error(request, 'تأیید hCaptcha ناموفق بود. لطفاً دوباره تلاش کنید.')
+            return False
+    else:
+        messages.error(request, 'لطفاً hCaptcha را تکمیل کنید.')
+        return False
+    
 
 def validate_image_size(image):
     limit_mb = 5
