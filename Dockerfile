@@ -29,6 +29,13 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+# Nginx serves /app/staticfiles. Include collected assets in the image so they
+# are present even when a deployment starts supervisord without the entrypoint.
+RUN DJANGO_SETTINGS_MODULE=Rasta_Web.settings.production \
+    python3 manage.py collectstatic --no-input --clear \
+    && test -f /app/staticfiles/images/background.jpeg \
+    && test -f /app/staticfiles/images/logo_darkblue.png
+
 # nginx + supervisor configuration for the combined process.
 COPY nginx/app.conf /etc/nginx/conf.d/app.conf
 COPY supervisord.conf /etc/supervisord.conf
